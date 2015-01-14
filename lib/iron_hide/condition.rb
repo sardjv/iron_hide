@@ -100,11 +100,11 @@ module IronHide
             type, *ary  = el.split('::')
             if type == 'user'
               Array(ary.inject(user) do |rval, attr|
-                rval.freeze.public_send(attr)
+                rval.public_send(attr)
               end)
             elsif type == 'resource'
               Array(ary.inject(resource) do |rval, attr|
-                rval.freeze.public_send(attr)
+                rval.public_send(attr)
               end)
             else
               raise "Expected #{type} to be 'resource' or 'user'"
